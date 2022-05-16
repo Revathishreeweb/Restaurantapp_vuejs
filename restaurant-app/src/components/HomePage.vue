@@ -21,10 +21,10 @@ export default {
 
 <style>
 header{
-    background-color: #7187ad;
+    /* background-color: #7187ad; */
     height: 95vh;
     padding-top: 30px;
-    background: #6788b1;
+    /* background: #6788b1; */
     position: relative;
 }
 </style>
