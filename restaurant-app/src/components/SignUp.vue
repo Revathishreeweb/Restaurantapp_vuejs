@@ -38,7 +38,7 @@ export default {
       if(result.status == 201) {
         //alert("Successfully sign up");
         localStorage.setItem('user-info', JSON.stringify(result.data))
-        this.$router.push({name:'HomePage'})
+        this.$router.push({name:'LoginPage'})
       }
     },
     mounted() {
