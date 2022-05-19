@@ -1,7 +1,8 @@
 <template>
   <div>
     <HeaderPage />
-    <h2 class="msg">Welcome to Add Restaurant Page</h2>
+    <!-- <h2 class="msg">Welcome to Add Restaurant Page</h2> -->
+    <h2>Add Form</h2>
     <form autoComplete="off" class="add">
       <input type="text" name="name" placeholder="Enter the Name" v-model="restaurant.name" />
       <input type="text" name="address" placeholder="Enter the Address" v-model="restaurant.address" />
@@ -38,7 +39,7 @@ export default {
       });
       if(result.status == 201)
       {
-        this.$router.push({name:'HomePage'})
+        this.$router.push({name:'HotelPage'})
       }
       console.log("result", result)
     }
@@ -54,6 +55,6 @@ export default {
 
 <style>
 .msg {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 </style>

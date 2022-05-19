@@ -51,7 +51,7 @@ export default {
 .register button,
 .login button,
 .add button {
-  width: 320px;
+  width: 324px;
   height: 40px;
   border: 1px solid skyblue;
   background: skyblue;
@@ -63,5 +63,9 @@ export default {
 .login button:active,
 .add button:active {
   border: 1px solid #222;
+}
+
+.remove-link {
+  text-decoration: none;
 }
 </style>

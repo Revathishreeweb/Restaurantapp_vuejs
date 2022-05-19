@@ -8,9 +8,13 @@
         v-model="password"
         placeholder="Enter Your Password"
       />
-      <button v-on:click="login">Login</button>
       <p>
-        <router-link to="/sign-up">SignUp</router-link>
+      <router-link to="/forgetpwd" class="forget-pwd">Forgot your password?</router-link>
+      </p>
+      <button v-on:click="login" class="signin-btn">Sign in to your account</button>
+      <p>
+        <span>Don't have an account? </span>
+        <router-link to="/sign-up" class="remove-link">SignUp</router-link>
       </p>
     </div>
   </div>
@@ -45,7 +49,20 @@ export default {
       if(user) {
         this.$router.push({name:'HomePage'})
       }
-    }
+    },
   },
 };
 </script>
+
+<style>
+.forget-pwd {
+  color: red;
+  margin-right: 10.5rem;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.signin-btn {
+  margin-top: 10px;
+}
+</style>

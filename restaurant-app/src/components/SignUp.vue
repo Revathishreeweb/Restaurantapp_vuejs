@@ -5,48 +5,54 @@
     <div class="register">
       <input type="text" v-model="name" placeholder="Enter Your Name" />
       <input type="text" v-model="email" placeholder="Enter Your Email" />
-      <input type="password" v-model="password" placeholder="Enter Your Password" />
+      <input
+        type="password"
+        v-model="password"
+        placeholder="Enter Your Password"
+      />
       <button v-on:click="signUp">SignUp</button>
       <p>
-        <router-link to="/login">Login</router-link>
+        <span>Already have an account? </span>
+        <router-link to="/login" class="remove-link"> Login</router-link>
       </p>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   name: "SignUp",
   data() {
     return {
       name: "",
       email: "",
-      password: ""
-    }
+      password: "",
+    };
   },
   methods: {
     async signUp() {
-      // console.log('signup', this.name,this.email,this.password);
-      let result = await axios.post("http://localhost:3000/users", {
+      const data = {
         name: this.name,
         email: this.email,
-        password: this.password
-      });
+        password: this.password,
+      }
+      // console.log('signup', this.name,this.email,this.password);
+      let result = await axios.post("http://localhost:3000/users", data);
 
       console.log(result);
-      if(result.status == 201) {
+      if (result.status == 201) {
         //alert("Successfully sign up");
-        localStorage.setItem('user-info', JSON.stringify(result.data))
-        this.$router.push({name:'LoginPage'})
+        localStorage.setItem("user-info", JSON.stringify(result.data));
+        this.$router.push({ name: "LoginPage" });
       }
     },
     mounted() {
-      let user = localStorage.getItem('user-info')
-      if(user) {
-        this.$router.push({name:'HomePage'})
+      let user = localStorage.getItem("user-info");
+      if (user) {
+        this.$router.push({ name: "HomePage" });
       }
-    }
-  }
+    },
+  },
 };
 </script>

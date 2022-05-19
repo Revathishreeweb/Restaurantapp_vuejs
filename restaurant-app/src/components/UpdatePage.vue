@@ -55,7 +55,7 @@ export default {
         }
       );
       if (result.status == 200) {
-        this.$router.push({ name: "HomePage" });
+        this.$router.push({ name: "HotelPage" });
       }
     },
   },

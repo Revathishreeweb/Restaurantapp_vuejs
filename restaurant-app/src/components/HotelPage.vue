@@ -1,14 +1,27 @@
 <template>
   <div>
     <HeaderPage />
-    <marquee class="msg">Hello {{ name }}, Welcome to Home page!!!!!!</marquee>
-    <header>
-      <div>
-        <h1 class="text">Healthy Food</h1>
-        <h1 class="text">Restaurant</h1>
-        <button class="btn" @click="nextPage">Next<span class="arrow">&#8594;</span></button>
-      </div>
-    </header>
+    <button class="add-btn" @click="redirectAdd">Add Restaurant</button>
+    <!-- <h2 class="msg">Hello {{ name }}, Welcome to Hotels page</h2> -->
+    <table border="1" class="table-content">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Address</th>
+        <th>Actions</th>
+      </tr>
+      <tr v-for="item in restaurant" :key="item.id">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.contact }}</td>
+        <td>{{ item.address }}</td>
+        <td>
+          <router-link :to="'/update/' + item.id">Update</router-link>
+          <button @click="deleteRestaurant(item.id)" class="del-btn">Delete</button>
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -49,7 +62,7 @@ export default {
       console.log(result);
       this.restaurant = result.data;
     },
-    nextPage() {
+    redirectAdd() {
         this.$router.push({ name: "AddPage" });
     }
   },
@@ -65,42 +78,21 @@ body {
   margin: 0;
   padding: 0;
 }
-header {
-  background: url(../assets/hotel-menu.webp);
-  height: 800px;
-  background-size: cover;
-  margin-top: 15px;
-  display: flex;
-  align-items: center;
-}
-.text {
-  font-size: 3.3rem;
-  display: flex;
-  align-items: center;
-  color: rgb(31, 162, 172);
-  margin-left: 160px;
-}
-.msg {
-  color: rgb(31, 162, 172);
-  font-size: 20px;
-}
 table {
   width: 100%;
-  text-align: center;
 }
-table td {
+table th,td {
   height: 30px;
 }
 .del-btn {
   margin-left: 10px;
 }
-.btn {
-  position: relative;
-  padding: 10px 40px;
-  font-size: 18px;
-  margin-right: 1.3rem;
+.table-content {
+    margin-top: 5rem;
 }
-.arrow {
-  margin-left: 7px;
+.add-btn {
+    float: right;
+    margin: 20px;
+    padding: 10px;
 }
 </style>
